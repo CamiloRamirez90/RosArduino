@@ -36,10 +36,12 @@ void servo_cb( const geometry_msgs::Twist& cmd_msg){
   } else{
   
   if (cmd_msg.angular.z < 0){
-  int a=cmd_msg.angular.z * 255;
-   derecha(a);
+  int a=cmd_msg.angular.z * 255;//Velocidad angular = 255
+   derecha(a); //ir a la derecha con velocidad 255
  } else if(cmd_msg.angular.z > 0){
-   izquierda(255);
+   izquierda(255);//Izquierda a 255
+// Hace Girar
+
   }else if(cmd_msg.linear.x < 0){
     // atras
   }else if(cmd_msg.linear.x > 0){
@@ -51,6 +53,7 @@ void servo_cb( const geometry_msgs::Twist& cmd_msg){
 
 
 ros::Subscriber<geometry_msgs::Twist> sub("cmd_vel", servo_cb);
+
 
 void setup(){
   pinMode(13, OUTPUT);
