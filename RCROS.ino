@@ -38,10 +38,15 @@ void servo_cb( const geometry_msgs::Twist& cmd_msg){
   if (cmd_msg.angular.z < 0){
   int a=cmd_msg.angular.z * 255;//Velocidad angular = 255
    derecha(a); //ir a la derecha con velocidad 255
+  delay(1000);
+
  } else if(cmd_msg.angular.z > 0){
    izquierda(255);//Izquierda a 255
-// Hace Girar
+  delay(1000);
+ derecha(280);
+parar();
 
+// Hace Girar
   }else if(cmd_msg.linear.x < 0){
     // atras
   }else if(cmd_msg.linear.x > 0){
@@ -70,7 +75,7 @@ void loop(){
     //digitalWrite(11, LOW);
 
   nh.spinOnce();
-  delay(1);
+  delay(100);
 }
 
 //Funcion para ir adelante
