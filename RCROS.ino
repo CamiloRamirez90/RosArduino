@@ -37,14 +37,14 @@ void servo_cb( const geometry_msgs::Twist& cmd_msg){
   
   if (cmd_msg.angular.z < 0){
   int a=cmd_msg.angular.z * 255;//Velocidad angular = 255
-   derecha(a); //ir a la derecha con velocidad 255
+   adelante(a); //ir a la derecha con velocidad 255
   delay(1000);
 
  } else if(cmd_msg.angular.z > 0){
    izquierda(255);//Izquierda a 255
   delay(1000);
- derecha(280);
-parar();
+ izquierda(280);
+adelante(a);
 
 // Hace Girar
   }else if(cmd_msg.linear.x < 0){
