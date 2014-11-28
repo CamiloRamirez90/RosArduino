@@ -42,9 +42,10 @@ void servo_cb( const geometry_msgs::Twist& cmd_msg){
 
  } else if(cmd_msg.angular.z > 0){
    izquierda(255);//Izquierda a 255
-  delay(1000);
- izquierda(280);
-adelante(a);
+//  delay(1000);
+// izquierda(280);
+//adelante(a);
+parar();
 
 // Hace Girar
   }else if(cmd_msg.linear.x < 0){
