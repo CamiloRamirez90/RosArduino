@@ -20,7 +20,7 @@
 
 #include <ros.h>
 #include <geometry_msgs/Twist.h>
-
+//Parametros de movimiento
 int R_ADELANTE = 10;
 int R_ATRAS = 9;
 int L_ADELANTE = 6;
