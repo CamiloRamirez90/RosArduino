@@ -28,6 +28,7 @@ int L_ATRAS = 11;
 
 ros::NodeHandle  nh;
 
+//Mover servo
 void servo_cb( const geometry_msgs::Twist& cmd_msg){
   if (cmd_msg.angular.z == 0 && cmd_msg.linear.x == 0 ){
       // parar
