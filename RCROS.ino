@@ -20,7 +20,8 @@
 
 #include <ros.h>
 #include <geometry_msgs/Twist.h>
-//Parametros de movimiento
+
+//Parametros de pines/movimiento de ruedas
 int R_ADELANTE = 10;
 int R_ATRAS = 9;
 int L_ADELANTE = 6;
@@ -69,14 +70,15 @@ void loop(){
   delay(1);
 }
 
-void adelante(int velocidad){
-analogWrite(R_ADELANTE, velocidad);
-digitalWrite(R_ATRAS, LOW);
-analogWrite(L_ADELANTE, velocidad);
-digitalWrite(L_ATRAS, LOW);
+//Funcion para ir adelante
+void adelante(int velocidad){ // Funcion recibe como parametro la velocidad
+analogWrite(R_ADELANTE, velocidad); //Rueda de la derecha va hacia adelante
+digitalWrite(R_ATRAS, LOW); //Rueda de la derecha apagado ir atras
+analogWrite(L_ADELANTE, velocidad); //Rueda de la izquierda va hacia adelante
+digitalWrite(L_ATRAS, LOW);//Rueda de la izquierda apagado ir atras
 }
 
-void atras(int velocidad){
+void atras(int velocidad){//Invierte la funcion ADELANTE
 digitalWrite(R_ADELANTE, LOW);
 analogWrite(R_ATRAS, velocidad);
 digitalWrite(L_ADELANTE, LOW);
@@ -84,20 +86,20 @@ analogWrite(L_ATRAS, velocidad);
 }
 
 void izquierda(int velocidad){
-analogWrite(R_ADELANTE, velocidad);
-digitalWrite(R_ATRAS, LOW);
-digitalWrite(L_ADELANTE, LOW);
-analogWrite(L_ATRAS, velocidad);
-}
+analogWrite(R_ADELANTE, velocidad); //Rueda derecha va hacia adelante
+digitalWrite(R_ATRAS, LOW);//Atras apagado
+digitalWrite(L_ADELANTE, LOW);//Adelante apagado
+analogWrite(L_ATRAS, velocidad);//Rueda izquierda va hacia atras
+}// Hace girar en circulos a la izquierda
 
-void derecha(int velocidad){
+void derecha(int velocidad){//Invierte la funcion IZQUIERDA
 digitalWrite(R_ADELANTE, LOW);
 analogWrite(R_ATRAS, velocidad);
 analogWrite(L_ADELANTE, velocidad);
 digitalWrite(L_ATRAS, LOW);
 }
 
-void parar(){
+void parar(){//Apaga los motores
 digitalWrite(R_ADELANTE, LOW);
 digitalWrite(R_ATRAS, LOW);
 digitalWrite(L_ADELANTE, LOW);
